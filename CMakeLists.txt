@@ -12,18 +12,18 @@ include(${PROJECT_PATH}/CMake/Common.cmake)
 
 if (WIN32)
   subdirs(
-  extern/freeglut 
-  extern/AntTweakBar 
-  extern/glew 
-  extern/zlib 
-  extern/partio 
+  extern/freeglut
+  extern/AntTweakBar
+  extern/glew
+  extern/zlib
+  extern/partio
   Demos SPlisHSPlasH Utilities Tools)
 else()
   subdirs(
-	extern/AntTweakBar 
-	extern/glew 
-	extern/zlib 
-	extern/partio 
+	extern/AntTweakBar
+	extern/glew
+	extern/zlib
+	extern/partio
 	Demos SPlisHSPlasH Utilities Tools)
 endif()
 
@@ -37,10 +37,10 @@ ExternalProject_Add(
    ExternalProject_PositionBasedDynamics
    PREFIX "${CMAKE_SOURCE_DIR}/extern/PositionBasedDynamics"
    GIT_REPOSITORY https://github.com/InteractiveComputerGraphics/PositionBasedDynamics.git
-   GIT_TAG "b81f1119763a01f0b201a68f398a4a1c9592ccb6"
+   GIT_TAG "36f571d27718f8d3fca9cd3344d47f2c3a1e4a09"
    INSTALL_DIR ${ExternalInstallDir}/PositionBasedDynamics
-   CMAKE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${ExternalInstallDir}/PositionBasedDynamics -DPBD_NO_DEMOS:BOOL=1		
-) 
+   CMAKE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${ExternalInstallDir}/PositionBasedDynamics -DPBD_NO_DEMOS:BOOL=1
+)
 
 ## CompactNSearch
 ExternalProject_Add(
@@ -50,8 +50,4 @@ ExternalProject_Add(
    GIT_TAG "1.0.0"
    INSTALL_DIR ${ExternalInstallDir}/CompactNSearch
    CMAKE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${ExternalInstallDir}/CompactNSearch
-) 
-
-
-
-
+)
