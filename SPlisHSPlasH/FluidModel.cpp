@@ -284,7 +284,7 @@ void FluidModel::performNeighborhoodSearchSort()
 	//////////////////////////////////////////////////////////////////////////
 	for (unsigned int i = 1; i < m_neighborhoodSearch->point_sets().size(); i++)
 	{
-		RigidBodyParticleObject *rb = getRigidBodyParticleObject(i - 1);
+		RigidBodyParticleObject *rb = getRigidBodyParticleObject(i - 1);// m_particleOjbects[0]为流体粒子，m_particleOjbects[i](i>0)是刚体粒子
 		if (rb->m_rigidBody->isDynamic())			// sort only dynamic boundaries
 		{
 			auto const& d = m_neighborhoodSearch->point_set(i);

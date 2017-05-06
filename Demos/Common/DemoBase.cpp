@@ -15,7 +15,7 @@
 
 using namespace SPH;
 using namespace std;
- 
+
 DemoBase::DemoBase()
 {
 	m_numberOfStepsPerRenderUpdate = 8;
@@ -282,7 +282,7 @@ void DemoBase::buildModel()
 	m_simulationMethod.simulation->setMaxErrorV(m_scene.maxErrorV);
 	m_simulationMethod.simulation->setViscosityMethod((ViscosityMethods) m_scene.viscosityMethod);
 	m_simulationMethod.simulation->setSurfaceTensionMethod((SurfaceTensionMethods)m_scene.surfaceTensionMethod);
-	
+
 
 	m_simulationMethod.model.setEnableDivergenceSolver(m_scene.enableDivergenceSolver);
 	m_simulationMethod.model.setViscosity(m_scene.viscosity);
@@ -314,7 +314,7 @@ void DemoBase::initFluidData(std::vector<Vector3r> &fluidParticles, std::vector<
 	}
 }
 
-
+//计算液体块内有多少个粒子，并进行填充
 void DemoBase::createFluidBlocks(std::vector<Vector3r> &fluidParticles)
 {
 	for (unsigned int i = 0; i < m_scene.fluidBlocks.size(); i++)
@@ -338,7 +338,7 @@ void DemoBase::createFluidBlocks(std::vector<Vector3r> &fluidParticles)
 			diff[0] -= diam;
 			diff[2] -= diam;
 		}
-		else if (m_scene.fluidBlocks[i]->mode == 2)
+		else if (m_scene.fluidBlocks[i]->mode == 2)//denseMode,
 		{
 			diff[0] -= xshift;
 			diff[2] -= diam;
@@ -678,7 +678,7 @@ void DemoBase::renderFluid()
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POINTS);
 		for (unsigned int i = 0; i < getSelectedParticles().size(); i++)
-		{			
+		{
 			glColor3fv(red);
 			glVertex3v(&getSimulationMethod().model.getPosition(0, getSelectedParticles()[i])[0]);
 		}
@@ -714,8 +714,8 @@ void DemoBase::selection(const Eigen::Vector2i &start, const Eigen::Vector2i &en
 
 	std::vector<unsigned int> hits;
 	base->m_selectedParticles.clear();
-	Selection::selectRect(start, end, &base->m_simulationMethod.model.getPosition(0, 0), 
-		&base->m_simulationMethod.model.getPosition(0, base->m_simulationMethod.model.numParticles() - 1), 
+	Selection::selectRect(start, end, &base->m_simulationMethod.model.getPosition(0, 0),
+		&base->m_simulationMethod.model.getPosition(0, base->m_simulationMethod.model.numParticles() - 1),
 		base->m_selectedParticles);
 	if (base->m_selectedParticles.size() > 0)
 		MiniGL::setMouseMoveFunc(GLUT_MIDDLE_BUTTON, mouseMove);

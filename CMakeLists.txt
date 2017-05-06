@@ -51,3 +51,4 @@ ExternalProject_Add(
    INSTALL_DIR ${ExternalInstallDir}/CompactNSearch
    CMAKE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${ExternalInstallDir}/CompactNSearch
 )
+ 
